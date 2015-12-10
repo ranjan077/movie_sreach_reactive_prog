@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/rxapp.css">
+	<title>Movie Search</title>
+</head>
+<body ng-app="imdb">
+	<div class="container" ng-controller="imdbcontroller">
+		
+		<div class="searchContainer">
+			<div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="searchInput search-query form-control" placeholder="Search Movie..." id="movieSearch" ng-model="selectedMovie"/>
+                </div>
+            </div>
+			<div class="searchAutoComplete" id="searchAutoComplete" ng-show="tmdbMovies.length > 0">
+				<ul id='autoCompList'>
+					<li ng-repeat="movie in tmdbMovies" class="movie-li" id="{{movie.id}}"><span ng-bind="movie.title"></span></li>
+				</ul>
+			</diV>
+		</div>
+		<table class="table" ng-if="result && !result.Error">
+		    <thead>
+		      <tr>
+		        <th>Movie</th>
+		        <th>Year</th>
+		        <th>Poster</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td ng-bind="result.title"></td>
+		        <td ng-if="result.release_date" ng-bind="result.release_date | date:'MM/dd/yyyy'"></td>
+		        <td ng-if="!result.release_date"><span>Not available</span></td>
+		        <td ng-if="result.poster_path"><img ng-src="https://image.tmdb.org/t/p/w500{{result.poster_path}}?api_key=19188b020d3309d58db3633524ed18d6"></td>
+		        <td ng-if="!result.poster_path"><span>Not available</span></td>
+		      </tr>
+		    </tbody>
+	  	</table>
+	  	<div  ng-if="result.Error">
+		    <span ng-bind="result.Error"></span>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/rx.js"></script>
+	<script type="text/javascript" src="js/reactiveDemo.js"></script>
+</body>
+</html>

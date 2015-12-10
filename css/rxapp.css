@@ -1,0 +1,26 @@
+.container{
+	margin-top: 50px;
+} 
+
+.note {
+	position: absolute;
+	width:50px;
+	height:20px;
+	border: 1px solid blue;
+}
+
+.searchContainer ul{
+	list-style-type: none;
+}
+
+.searchContainer ul > li:hover{
+	background-color: rgb(217, 83, 79);
+	cursor: pointer;
+}
+
+.searchAutoComplete {
+	border-left: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-color: rgb(128, 128, 128);
+}
